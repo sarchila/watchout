@@ -16,7 +16,14 @@
   <div class = "container">
     <div id="current-score"></div>
     <div id="high-score"></div>
-    <svg width = "820" height = "620"></svg>
+    <svg width = "820" height = "620">
+    <defs>
+      <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="55" width="55">
+        <image x="0" y="0" xlink:href="fred.png" height = "55" width = "55"></image>
+      </pattern>
+    </defs>
+    <ellipse cx="300" cy="80" rx="18" ry="22" fill="url(#image)"/>
+    </svg>
   </div>
 <script src = "collider.js"></script>
 </body>
