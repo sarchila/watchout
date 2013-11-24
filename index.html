@@ -3,26 +3,36 @@
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore-min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/2.7.4/d3.min.js">
 </script>
+<script src = "http://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <style>
 .enemy{
   fill: red;
 }
 .container{
+  width: 900px;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.deets{
+  text-align: right;
 }
 </style>
 <body>
   <div class = "container">
-    <div id="current-score"></div>
-    <div id="high-score"></div>
+    <div class = "deets">
+      <div id="current-score">Current Score: <span>0</span></div>
+      <div id="high-score">High Score: <span>0</span></div>
+      <div class = "level">Level: <span>1</span></div>
+    </div>
     <svg width = "820" height = "620">
     <defs>
-      <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="800" width="600">
-        <image x="0" y="0" xlink:href="fred.png" height = "800" width = "600"></image>
+      <pattern id="image" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
+        <image x="0" y="0" xlink:href="fred.png" height = "30" width = "30"></image>
       </pattern>
     </defs>
-    <ellipse rx="18" ry="22" fill="url(#image)"/>
+    <ellipse rx="13" ry="13" fill="url(#image)"/>
     </svg>
   </div>
 <script src = "collider.js"></script>
