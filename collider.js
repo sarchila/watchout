@@ -31,7 +31,7 @@ var drawEnemies = function(){
       .attr('class', 'enemy')
       .attr('cx', function (enemy) {return enemy.x;})
       .attr('cy', function (enemy) {return enemy.y;})
-      .attr('style', function(enemy){return "fill:rgb(" + enemy.rgb.join(",") + ")"})
+      .style('fill', function(enemy){return "rgb(" + enemy.rgb.join(",") + ")";})
       .attr('r', function (enemy) {return enemy.r;});
   enem.exit().remove();
 
@@ -75,10 +75,10 @@ var updateEnemies = function(enemies){
 var moveEnemies = function (){
   updateEnemies(enemies);
   enem
-    .attr('style', function(enemy){return "fill:rgb(" + enemy.rgb.join(",") + ")"})
     .transition()
-    .duration(500)
+    .duration(1000)
     .attr('cx', function(d,i) {return Math.random()*800 + 10})
+    .style('fill', function(enemy){return "rgb(" + enemy.rgb.join(",") + ")";})
     .attr('cy', function(d,i) {return Math.random()*600 + 10});
 };
 
@@ -110,7 +110,7 @@ var changeScores = function(c, h, ec){
 };
 
 setInterval(function(){
-  currentScore += 50;
+  currentScore += 500;
   if (currentScore >= highScore){
     highScore = currentScore;
   }
