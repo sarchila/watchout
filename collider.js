@@ -97,8 +97,31 @@ var detectCollision = function(enemy){
 var killAllHumans = function(){
   changeScores(0,highScore,1);
   enemyCount = 1;
-  makeEnemies(enemyCount);
+  var temp = addEnemies;
+  addEnemies = function(){};
+  makeEnemies(0);
   drawEnemies();
+  d3.select('ellipse').transition().duration(2000)
+  .attr('rx',800)
+  .attr('ry',800);
+  d3.select('image').transition().duration(2000)
+  .attr('height',1600)
+  .attr('width',1600).each("end",function(){
+  d3.select('image').transition().duration(400)
+  .attr('xlink:href',"fredLoss.png");});
+  setTimeout(function(){
+  d3.select('ellipse').transition().duration(100)
+  .attr('rx',22)
+  .attr('ry',22);
+  d3.select('image').transition().duration(100)
+  .attr('height',50)
+  .attr('width',50)
+  .attr('xlink:href',"fred.png");
+    makeEnemies(enemyCount);
+    drawEnemies();
+    addEnemies = temp;
+  },3000);
+
 };
 
 var changeScores = function(c, h, ec){
@@ -109,13 +132,18 @@ var changeScores = function(c, h, ec){
   d3.select('.level span').text(ec);
 };
 
-setInterval(function(){
+
+var addEnemies = function(){
   currentScore += 500;
   if (currentScore >= highScore){
     highScore = currentScore;
   }
   changeScores(currentScore,highScore,enemyCount);
   moveEnemies();
+};
+
+setInterval(function(){
+  addEnemies();
 }, 1000);
 
 setInterval(function(){
